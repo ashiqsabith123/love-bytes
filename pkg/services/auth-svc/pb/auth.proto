@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package authsvc;
+
+option go_package = "./pkg/services/auth-svc/pb";
+
+service AuthService{
+    rpc Signup(SignUpReq)returns(Responce){}
+}
+
+message SignUpReq{
+    string fullname =1;
+    int64  phone =2;
+    string username =3;
+    string password =4;
+}
+
+message Responce{
+    int32  code =1;
+    string message =2;
+    string error =3;
+}

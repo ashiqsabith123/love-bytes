@@ -1,4 +1,4 @@
-package inteface
+package intefaces
 
 import "github.com/ashiqsabith123/api-gateway/pkg/models/request"
 

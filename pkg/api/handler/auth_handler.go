@@ -5,7 +5,7 @@ import (
 
 	request "github.com/ashiqsabith123/api-gateway/pkg/models/request"
 	responce "github.com/ashiqsabith123/api-gateway/pkg/models/responce"
-	auth "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/functions/interface"
+	auth "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/functions/interfaces"
 	"github.com/gin-gonic/gin"
 )
 

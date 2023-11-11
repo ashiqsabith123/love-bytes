@@ -1,0 +1,5 @@
+{
+    "ports":{
+        "auth-svc-port":"50001"
+    }
+}

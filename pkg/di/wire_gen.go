@@ -9,13 +9,16 @@ package di
 import (
 	"github.com/ashiqsabith123/api-gateway/pkg/api"
 	"github.com/ashiqsabith123/api-gateway/pkg/api/handler"
+	"github.com/ashiqsabith123/api-gateway/pkg/config"
+	"github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/client"
 	"github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/functions"
 )
 
 // Injectors from wire.go:
 
-func InitializeApi() *server.Server {
-	authFunctions := functions.NewAuthFunctions()
+func InitializeApi(config2 config.Config) *server.Server {
+	authClient := client.NewAuthClient(config2)
+	authFunctions := functions.NewAuthFunctions(authClient)
 	authHandler := handler.NewAuthHandler(authFunctions)
 	serverServer := server.NewServer(authHandler)
 	return serverServer
