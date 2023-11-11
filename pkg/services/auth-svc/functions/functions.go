@@ -6,7 +6,7 @@ import (
 	"github.com/ashiqsabith123/api-gateway/pkg/models/request"
 	client "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/client/interface"
 	auth "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/functions/interfaces"
-	"github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/pb"
+	"github.com/ashiqsabith123/love-bytes-proto/auth/pb"
 )
 
 type AuthFunctions struct {
@@ -19,6 +19,7 @@ func NewAuthFunctions(client client.AuthClient) auth.AuthFunctions {
 }
 
 func (A *AuthFunctions) SignUp(data request.SignupReq) {
+
 	client := A.client.GetClient()
 
 	client.Signup(context.TODO(), &pb.SignUpReq{

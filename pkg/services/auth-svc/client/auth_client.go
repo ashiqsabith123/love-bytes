@@ -6,7 +6,7 @@ import (
 
 	"github.com/ashiqsabith123/api-gateway/pkg/config"
 	intefaces "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/client/interface"
-	"github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/pb"
+
 	"google.golang.org/grpc"
 )
 
