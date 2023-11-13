@@ -2,6 +2,7 @@ package functions
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/ashiqsabith123/api-gateway/pkg/models/request"
 	client "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/client/interface"
@@ -13,19 +14,23 @@ type AuthFunctions struct {
 	client client.AuthClient
 }
 
+var clients pb.AuthServiceClient
+
 func NewAuthFunctions(client client.AuthClient) auth.AuthFunctions {
-	return &AuthFunctions{client: client}
+	authfunc := &AuthFunctions{client: client}
+	clients = authfunc.client.GetClient()
+	return &AuthFunctions{}
 
 }
 
 func (A *AuthFunctions) SignUp(data request.SignupReq) {
 
-	client := A.client.GetClient()
-
-	client.Signup(context.TODO(), &pb.SignUpReq{
+	resp, err := clients.Signup(context.TODO(), &pb.SignUpReq{
 		Fullname: data.FullName,
 		Phone:    data.Phone,
 		Username: data.Username,
 		Password: data.Password,
 	})
+
+	fmt.Println(resp, err)
 }
