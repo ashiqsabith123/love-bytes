@@ -3,29 +3,28 @@ package helper
 import (
 	"crypto/tls"
 	"crypto/x509"
-	"log"
 	"os"
 
 	"google.golang.org/grpc/credentials"
 )
 
-func GetCertificate(ca_cert, client_cert, client_key string) credentials.TransportCredentials {
+func GetCertificate(ca_cert, client_cert, client_key string) (credentials.TransportCredentials, error) {
 	// read ca's cert
 	caCert, err := os.ReadFile(ca_cert)
 	if err != nil {
-		log.Fatal(caCert)
+		return nil, err
 	}
 
 	// create cert pool and append ca's cert
 	certPool := x509.NewCertPool()
 	if ok := certPool.AppendCertsFromPEM(caCert); !ok {
-		log.Fatal(err)
+		return nil, err
 	}
 
 	//read client cert
 	clientCert, err := tls.LoadX509KeyPair(client_cert, client_key)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
 	config := &tls.Config{
@@ -35,5 +34,5 @@ func GetCertificate(ca_cert, client_cert, client_key string) credentials.Transpo
 
 	tlsCredential := credentials.NewTLS(config)
 
-	return tlsCredential
+	return tlsCredential, nil
 }
