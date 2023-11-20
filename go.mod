@@ -2,7 +2,11 @@ module github.com/ashiqsabith123/api-gateway
 
 go 1.21.3
 
-require github.com/gin-gonic/gin v1.9.1
+require (
+	github.com/gin-gonic/gin v1.9.1
+	github.com/google/wire v0.5.0
+	github.com/jinzhu/copier v0.4.0
+)
 
 require (
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
@@ -20,12 +24,13 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
+	golang.org/x/time v0.4.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230920204549-e6e6cdab5c13 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 )
 
 require (
-	github.com/ashiqsabith123/love-bytes-proto v0.0.0-20231111092926-6f6fa1018825 // indirect
+	github.com/ashiqsabith123/love-bytes-proto v0.0.0-20231117102816-a1c9a3151023
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect

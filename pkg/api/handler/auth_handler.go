@@ -22,10 +22,32 @@ func (A *AuthHandler) Signup(C *gin.Context) {
 	var signupreq request.SignupReq
 
 	if err := C.ShouldBindJSON(&signupreq); err != nil {
-		resp := responce.ErrorReposonce(http.StatusNotAcceptable, "All fileds required", err)
+		resp := responce.ErrorReposonce(http.StatusNotAcceptable, "All fileds required", err.Error(), nil)
 		C.AbortWithStatusJSON(http.StatusNotAcceptable, resp)
 	}
 
 	A.functions.SignUp(signupreq)
+
+}
+
+func (A *AuthHandler) SendOtp(C *gin.Context) {
+	var otpReq request.OtpReq
+
+	if err := C.ShouldBindJSON(&otpReq); err != nil {
+		resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid number", err.Error(), nil)
+		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
+		return
+	}
+
+	resp, ok := A.functions.SendOtp(otpReq)
+
+	if !ok {
+		resp := responce.ErrorReposonce(resp.Code, resp.Message, resp.Error.(string), nil)
+		C.AbortWithStatusJSON(resp.Code, resp)
+		return
+	}
+
+	resp = responce.SuccessResponse(resp.Code, resp.Message)
+	C.JSON(resp.Code, resp)
 
 }

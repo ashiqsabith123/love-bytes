@@ -4,7 +4,9 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"os"
+	"regexp"
 
+	"github.com/ashiqsabith123/api-gateway/pkg/models/responce"
 	"google.golang.org/grpc/credentials"
 )
 
@@ -35,4 +37,22 @@ func GetCertificate(ca_cert, client_cert, client_key string) (credentials.Transp
 	tlsCredential := credentials.NewTLS(config)
 
 	return tlsCredential, nil
+}
+
+func CreateResponse(code int32, message, err string) responce.Response {
+	return responce.Response{
+		Code:    int(code),
+		Message: message,
+		Error:   err,
+	}
+
+}
+
+func IsValidPhoneNumber(phoneNumber string) bool {
+
+	regex := `^[1-9][0-9]{9}$`
+
+	pattern := regexp.MustCompile(regex)
+
+	return pattern.MatchString(phoneNumber)
 }

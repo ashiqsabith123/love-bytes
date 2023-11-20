@@ -6,3 +6,7 @@ type SignupReq struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
+
+type OtpReq struct {
+	Phone string `json:"phone"`
+}
