@@ -2,7 +2,6 @@ package functions
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/ashiqsabith123/api-gateway/pkg/helper"
 	"github.com/ashiqsabith123/api-gateway/pkg/models/request"
@@ -25,16 +24,24 @@ func NewAuthFunctions(client client.AuthClient) auth.AuthFunctions {
 
 }
 
-func (A *AuthFunctions) SignUp(data request.SignupReq) {
+func (A *AuthFunctions) VerifyOtpAndSignUp(data request.OtpSignupReq) (responce.Response, bool) {
 
-	resp, err := clients.Signup(context.TODO(), &pb.SignUpReq{
+	resp, _ := clients.Signup(context.TODO(), &pb.OtpSignUpReq{
 		Fullname: data.FullName,
 		Phone:    data.Phone,
 		Username: data.Username,
 		Password: data.Password,
+		Otp:      data.Otp,
 	})
 
-	fmt.Println(resp, err)
+	response := helper.CreateResponse(resp.Code, resp.Message, resp.Error)
+
+	if resp.Error != "" {
+		return response, false
+	}
+
+	return response, true
+
 }
 
 func (A *AuthFunctions) SendOtp(data request.OtpReq) (responce.Response, bool) {
@@ -45,15 +52,13 @@ func (A *AuthFunctions) SendOtp(data request.OtpReq) (responce.Response, bool) {
 		return response, false
 	}
 
-	resp, err := clients.SendOtp(context.TODO(), &pb.OtpReq{
+	resp, _ := clients.SendOtp(context.TODO(), &pb.OtpReq{
 		Phone: data.Phone,
 	})
 
-	fmt.Println("resp:", resp)
-
 	response := helper.CreateResponse(resp.Code, resp.Message, resp.Error)
 
-	if err != nil {
+	if resp.Error != "" {
 		return response, false
 	}
 

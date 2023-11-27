@@ -40,6 +40,7 @@ func GetCertificate(ca_cert, client_cert, client_key string) (credentials.Transp
 }
 
 func CreateResponse(code int32, message, err string) responce.Response {
+
 	return responce.Response{
 		Code:    int(code),
 		Message: message,

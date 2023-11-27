@@ -2,7 +2,6 @@ package routes
 
 import (
 	"github.com/ashiqsabith123/api-gateway/pkg/api/handler"
-	"github.com/ashiqsabith123/api-gateway/pkg/api/middlewares"
 	"github.com/gin-gonic/gin"
 )
 
@@ -10,8 +9,8 @@ func AuthRoutes(server *gin.Engine, authHandler *handler.AuthHandler) {
 
 	user := server.Group("/user")
 	{
-		user.POST("/signup", authHandler.Signup)
-		user.POST("/sendotp", middlewares.ApiRateLimiter, authHandler.SendOtp)
+		user.POST("/signup", authHandler.VerifyOtpAndSignup)
+		user.POST("/sendotp", authHandler.SendOtp)
 	}
 
 }

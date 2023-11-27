@@ -17,16 +17,26 @@ func NewAuthHandler(authFunc auth.AuthFunctions) *AuthHandler {
 	return &AuthHandler{functions: authFunc}
 }
 
-func (A *AuthHandler) Signup(C *gin.Context) {
+func (A *AuthHandler) VerifyOtpAndSignup(C *gin.Context) {
 
-	var signupreq request.SignupReq
+	var otpsignupreq request.OtpSignupReq
 
-	if err := C.ShouldBindJSON(&signupreq); err != nil {
+	if err := C.ShouldBindJSON(&otpsignupreq); err != nil {
 		resp := responce.ErrorReposonce(http.StatusNotAcceptable, "All fileds required", err.Error(), nil)
 		C.AbortWithStatusJSON(http.StatusNotAcceptable, resp)
 	}
 
-	A.functions.SignUp(signupreq)
+	resp, ok := A.functions.VerifyOtpAndSignUp(otpsignupreq)
+
+	if !ok {
+
+		resp := responce.ErrorReposonce(resp.Code, resp.Message, resp.Error.(string), nil)
+		C.AbortWithStatusJSON(resp.Code, resp)
+		return
+	}
+
+	resp = responce.SuccessResponse(resp.Code, resp.Message)
+	C.JSON(resp.Code, resp)
 
 }
 
@@ -42,6 +52,7 @@ func (A *AuthHandler) SendOtp(C *gin.Context) {
 	resp, ok := A.functions.SendOtp(otpReq)
 
 	if !ok {
+
 		resp := responce.ErrorReposonce(resp.Code, resp.Message, resp.Error.(string), nil)
 		C.AbortWithStatusJSON(resp.Code, resp)
 		return

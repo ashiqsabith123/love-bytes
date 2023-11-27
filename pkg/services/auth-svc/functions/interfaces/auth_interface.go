@@ -6,6 +6,6 @@ import (
 )
 
 type AuthFunctions interface {
-	SignUp(data request.SignupReq)
+	VerifyOtpAndSignUp(data request.OtpSignupReq) (responce.Response, bool)
 	SendOtp(data request.OtpReq) (responce.Response, bool)
 }
