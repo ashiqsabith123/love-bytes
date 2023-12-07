@@ -26,7 +26,7 @@ func NewAuthFunctions(client client.AuthClient) auth.AuthFunctions {
 
 func (A *AuthFunctions) VerifyOtpAndSignUp(data request.OtpSignupReq) (responce.Response, bool) {
 
-	resp, _ := clients.Signup(context.TODO(), &pb.OtpSignUpReq{
+	resp, _ := clients.VerifyOtpAndSignup(context.TODO(), &pb.OtpSignUpReq{
 		Fullname: data.FullName,
 		Phone:    data.Phone,
 		Username: data.Username,
