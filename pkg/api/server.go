@@ -10,11 +10,14 @@ type Server struct {
 	engine *gin.Engine
 }
 
-func NewServer(authHandler *handler.AuthHandler) *Server {
+func NewServer(authHandler *handler.AuthHandler, matchHanlder *handler.MatchHandler) *Server {
 
 	server := gin.Default()
 
-	routes.AuthRoutes(server, authHandler)
+	user := server.Group("/user")
+
+	routes.AuthRoutes(user, authHandler)
+	routes.MatchRoutes(user, matchHanlder)
 
 	return &Server{
 		engine: server,

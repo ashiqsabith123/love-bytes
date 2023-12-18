@@ -1,10 +1,14 @@
 package middlewares
 
 import (
+	"fmt"
 	"net/http"
+	"strings"
 	"sync"
 	"time"
 
+	"github.com/ashiqsabith123/api-gateway/pkg/helper"
+	"github.com/ashiqsabith123/api-gateway/pkg/models/responce"
 	"github.com/gin-gonic/gin"
 )
 
@@ -62,5 +66,33 @@ func ApiRateLimiter(C *gin.Context) {
 	}
 
 	C.Next()
+
+}
+
+func Authenticate(C *gin.Context) {
+
+	authHeader := C.GetHeader("Authorization")
+
+	token := strings.Split(authHeader, " ")
+
+	if len(token) < 2 {
+
+		resp := responce.ErrorReposonce(401, "Unauthorized", "token not found")
+		C.AbortWithStatusJSON(http.StatusUnauthorized, resp)
+		return
+	}
+
+	claim, err := helper.ValidateJWTTokens(token[1])
+
+	if err != nil {
+
+		resp := responce.ErrorReposonce(401, "Unauthorized", err.Error())
+		C.AbortWithStatusJSON(http.StatusUnauthorized, resp)
+		return
+	}
+
+	fmt.Println("iddddddd", claim["id"].(float64))
+
+	C.Set("userID", claim["id"].(float64))
 
 }

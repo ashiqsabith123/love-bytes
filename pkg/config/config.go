@@ -3,11 +3,17 @@ package config
 import "github.com/spf13/viper"
 
 type Ports struct {
-	AuthSvcPort string `mapstructure:"auth-svc-port"`
+	AuthSvcPort  string `mapstructure:"auth-svc-port"`
+	MatchSvcPort string `mapstructure:"match-svc-port"`
+}
+
+type JWTConfig struct {
+	SecretKey string `mapstructure:"secret-key"`
 }
 
 type Config struct {
-	PORTS Ports `mapstructure:"ports"`
+	PORTS Ports     `mapstructure:"ports"`
+	JWT   JWTConfig `mapstructure:"jwt"`
 }
 
 var config Config
@@ -27,4 +33,8 @@ func LoadConfig() (Config, error) {
 	}
 
 	return config, nil
+}
+
+func GetSecretKey() string {
+	return config.JWT.SecretKey
 }

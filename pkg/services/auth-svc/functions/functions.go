@@ -9,6 +9,9 @@ import (
 	client "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/client/interface"
 	auth "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/functions/interfaces"
 	"github.com/ashiqsabith123/love-bytes-proto/auth/pb"
+	"github.com/jinzhu/copier"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type AuthFunctions struct {
@@ -24,44 +27,92 @@ func NewAuthFunctions(client client.AuthClient) auth.AuthFunctions {
 
 }
 
-func (A *AuthFunctions) VerifyOtpAndSignUp(data request.OtpSignupReq) (responce.Response, bool) {
+func (A *AuthFunctions) SendOtp(otp request.OtpReq) (responce.Response, bool) {
 
-	resp, _ := clients.VerifyOtpAndSignup(context.TODO(), &pb.OtpSignUpReq{
-		Fullname: data.FullName,
-		Phone:    data.Phone,
-		Username: data.Username,
-		Password: data.Password,
-		Otp:      data.Otp,
-	})
-
-	response := helper.CreateResponse(resp.Code, resp.Message, resp.Error)
-
-	if resp.Error != "" {
+	if !helper.IsValidPhoneNumber(otp.Phone) {
+		response := helper.CreateResponse(400, "Phone number is not in proper format", "Invalid phone number", nil)
 		return response, false
 	}
+
+	resp, _ := clients.SendOtp(context.TODO(), &pb.OtpReq{
+		Phone: otp.Phone,
+	})
+
+	if resp.Error != nil {
+		response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
+		return response, false
+	}
+
+	response := helper.CreateResponse(resp.Code, resp.Message, nil, nil)
 
 	return response, true
 
 }
 
-func (A *AuthFunctions) SendOtp(data request.OtpReq) (responce.Response, bool) {
+func (A *AuthFunctions) VerifyOtpAndAuth(verifyOtp request.VerifyOtpReq) (responce.Response, bool) {
 
-	if !helper.IsValidPhoneNumber(data.Phone) {
-
-		response := helper.CreateResponse(400, "Phone number is not in proper format", "Invalid phone number")
+	if !helper.IsValidPhoneNumber(verifyOtp.Phone) {
+		response := helper.CreateResponse(400, "Phone number is not in proper format", "Invalid phone number", nil)
 		return response, false
 	}
 
-	resp, _ := clients.SendOtp(context.TODO(), &pb.OtpReq{
-		Phone: data.Phone,
+	err := helper.Validator(verifyOtp)
+
+	if err != nil {
+		response := helper.CreateResponse(400, "Data is not in proper format", "Invalid fields", nil)
+		return response, false
+	}
+
+	resp, _ := clients.VerifyOtpAndAuth(context.TODO(), &pb.VerifyOtpReq{
+		Phone: verifyOtp.Phone,
+		Otp:   verifyOtp.Otp,
 	})
 
-	response := helper.CreateResponse(resp.Code, resp.Message, resp.Error)
-
-	if resp.Error != "" {
+	if resp.Error != nil {
+		response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
 		return response, false
 	}
 
-	return response, true
+	var tokenData pb.TokenResp
 
+	if err := proto.Unmarshal(resp.Data.Value, &tokenData); err != nil {
+		response := helper.CreateResponse(resp.Code, resp.Message, "Error unmarshaling data", nil)
+		return response, false
+	}
+
+	var TokenResp responce.TokenResp
+
+	copier.Copy(&TokenResp, &tokenData)
+
+	response := helper.CreateResponse(resp.Code, resp.Message, nil, TokenResp)
+
+	return response, true
+}
+
+func (A *AuthFunctions) SaveUserDetails(ctx context.Context, userDetails request.UserDetails) (responce.Response, bool) {
+
+	err := helper.Validator(userDetails)
+
+	if err != nil {
+		response := helper.CreateResponse(400, "Data is not in proper format", "Invalid fields"+err.Error(), nil)
+		return response, false
+	}
+
+	resp, _ := clients.SaveUserDetais(ctx, &pb.UserDetailsReq{
+		UserID:      int32(ctx.Value("userID").(float64)),
+		Fullname:    userDetails.Fullname,
+		Email:       userDetails.Email,
+		Location:    userDetails.Location,
+		Dateofbirth: userDetails.Dateofbirth,
+		Gender:      userDetails.Gender,
+	})
+
+	if resp.Error != nil {
+		response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
+		return response, false
+	}
+
+	response := helper.CreateResponse(resp.Code, resp.Message, nil, nil)
+
+	return response, true
 }

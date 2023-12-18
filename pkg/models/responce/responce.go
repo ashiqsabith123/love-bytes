@@ -1,5 +1,10 @@
 package responce
 
+type TokenResp struct {
+	UserFound bool   ` json:"userfound"`
+	Token     string ` json:"token,omitempty"`
+}
+
 type Response struct {
 	Code    int         `json:"status"`
 	Message string      `json:"message"`
@@ -7,13 +12,13 @@ type Response struct {
 	Data    interface{} `json:"data,omitempty"`
 }
 
-func ErrorReposonce(code int, message string, err string, data interface{}) Response {
+func ErrorReposonce(code int, message string, err string) Response {
 
 	return Response{
 		Code:    code,
 		Message: message,
 		Error:   err,
-		Data:    data,
+		Data:    nil,
 	}
 }
 

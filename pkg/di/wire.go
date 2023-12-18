@@ -7,16 +7,21 @@ import (
 	server "github.com/ashiqsabith123/api-gateway/pkg/api"
 	"github.com/ashiqsabith123/api-gateway/pkg/api/handler"
 	"github.com/ashiqsabith123/api-gateway/pkg/config"
-	client "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/client"
+	authclient "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/client"
 	auth "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/functions"
+	matchclient "github.com/ashiqsabith123/api-gateway/pkg/services/match-svc/client"
+	match "github.com/ashiqsabith123/api-gateway/pkg/services/match-svc/functions"
 	"github.com/google/wire"
 )
 
 func InitializeApi(config config.Config) *server.Server {
 	wire.Build(
-		client.NewAuthClient,
+		authclient.NewAuthClient,
 		auth.NewAuthFunctions,
 		handler.NewAuthHandler,
+		matchclient.NewMatchClient,
+		match.NewMatchFunctions,
+		handler.NewMatchHandler,
 		server.NewServer,
 	)
 
