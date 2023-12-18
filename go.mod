@@ -32,7 +32,7 @@ require (
 )
 
 require (
-	github.com/ashiqsabith123/love-bytes-proto v0.0.0-20231218070509-5db4a2c1cc90
+	github.com/ashiqsabith123/love-bytes-proto v0.0.0-20231218105312-6a5494097649
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect

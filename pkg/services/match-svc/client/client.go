@@ -35,7 +35,7 @@ func (A *MatchClient) InitMatchClient() {
 		log.Fatal("Could not connect the auth server:", err)
 	}
 
-	fmt.Println("Auth service connected at port ", A.config.PORTS.MatchSvcPort)
+	fmt.Println("Match service connected at port ", A.config.PORTS.MatchSvcPort)
 
 }
 

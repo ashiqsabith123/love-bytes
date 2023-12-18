@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"net/http"
 
 	responce "github.com/ashiqsabith123/api-gateway/pkg/models/responce"
@@ -38,8 +37,14 @@ func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 	files := form.File["photos"]
 
 	for _, fileHeader := range files {
+
 		contentType := fileHeader.Header.Get("Content-Type")
-		fmt.Println("Content typee", contentType)
+		if contentType != "image/jpeg" {
+			resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "Contains other files")
+			C.AbortWithStatusJSON(http.StatusBadRequest, resp)
+			return
+		}
+
 	}
 
 	resp, ok := M.functions.UploadPhotos(C, files)

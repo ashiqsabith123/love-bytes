@@ -2,6 +2,7 @@ package functions
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/ashiqsabith123/api-gateway/pkg/helper"
 	"github.com/ashiqsabith123/api-gateway/pkg/models/request"
@@ -63,10 +64,15 @@ func (A *AuthFunctions) VerifyOtpAndAuth(verifyOtp request.VerifyOtpReq) (respon
 		return response, false
 	}
 
-	resp, _ := clients.VerifyOtpAndAuth(context.TODO(), &pb.VerifyOtpReq{
+	resp, err := clients.VerifyOtpAndAuth(context.TODO(), &pb.VerifyOtpReq{
 		Phone: verifyOtp.Phone,
 		Otp:   verifyOtp.Otp,
 	})
+
+	if err != nil {
+		fmt.Println("Errr", err)
+
+	}
 
 	if resp.Error != nil {
 		response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
