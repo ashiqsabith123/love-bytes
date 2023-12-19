@@ -1,7 +1,6 @@
 package middlewares
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 	"sync"
@@ -90,8 +89,6 @@ func Authenticate(C *gin.Context) {
 		C.AbortWithStatusJSON(http.StatusUnauthorized, resp)
 		return
 	}
-
-	fmt.Println("iddddddd", claim["id"].(float64))
 
 	C.Set("userID", claim["id"].(float64))
 

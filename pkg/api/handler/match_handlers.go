@@ -56,21 +56,5 @@ func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 
 	C.JSON(resp.Code, resp)
 
-	//fmt.Println(form)
-
-	//var buffer []byte
-	// form, err := c.MultipartForm()
-	// if err != nil {
-	// 	c.JSON(400, gin.H{"error": err.Error()})
-	// 	return
-	// }
-
-	// files := form.File["image"]
-	// for _, file := range files {
-	// 	// Process each uploaded file, e.g., save it to disk or perform other operations
-	// 	// For simplicity, let's just print the filename
-	// 	fmt.Println(file.Filename)
-	// }
-
-	// c.JSON(200, gin.H{"message": "Files uploaded successfully"})
+	
 }
