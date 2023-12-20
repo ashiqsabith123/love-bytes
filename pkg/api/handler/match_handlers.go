@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"fmt"
 	"net/http"
 
 	responce "github.com/ashiqsabith123/api-gateway/pkg/models/responce"
@@ -16,11 +17,24 @@ func NewMatchHandler(mathcFunc match.MatchFunctions) *MatchHandler {
 	return &MatchHandler{functions: mathcFunc}
 }
 
+// @Summary Upload photos with additional fields
+// @Description Upload photos with additional fields using a multipart form
+// @ID upload-photos
+// @Accept multipart/form-data
+// @Produce json
+// @Param Authorization header string true "Bearer {token}" default("your_access_token") // Include this if authorization is required
+// @Param field_name formData string true "Value for the 'field_name' field"
+// @Param photos formData file true "Multiple photos to upload"
+// @Success 200 {object} ApiResponse "Photos uploaded successfully"
+// @Failure 400 {object} ApiResponse "Invalid request or contains other files"
+// @Failure 401 {object} ApiResponse "Unauthorized - User id not found"
+// @Router /upload-photos [post]
 func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 
 	_, ok := C.Get("userID")
 
 	if !ok {
+
 		resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "User id not found")
 		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
 		return
@@ -29,6 +43,7 @@ func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 	form, err := C.MultipartForm()
 
 	if err != nil {
+
 		resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "No photos found")
 		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
 		return
@@ -40,7 +55,9 @@ func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 
 		contentType := fileHeader.Header.Get("Content-Type")
 		if contentType != "image/jpeg" {
+
 			resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "Contains other files")
+			fmt.Println("ree", resp)
 			C.AbortWithStatusJSON(http.StatusBadRequest, resp)
 			return
 		}
@@ -56,5 +73,4 @@ func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 
 	C.JSON(resp.Code, resp)
 
-	
 }

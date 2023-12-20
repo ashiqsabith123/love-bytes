@@ -18,7 +18,6 @@ func ErrorReposonce(code int, message string, err string) Response {
 		Code:    code,
 		Message: message,
 		Error:   err,
-		Data:    nil,
 	}
 }
 
@@ -30,4 +29,4 @@ func SuccessResponse(code int, message string, data ...interface{}) Response {
 		Error:   nil,
 		Data:    data,
 	}
-}
+}// ignore: avoid_single_cascade_in_expression_statements

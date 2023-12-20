@@ -17,6 +17,15 @@ func NewAuthHandler(authFunc auth.AuthFunctions) *AuthHandler {
 	return &AuthHandler{functions: authFunc}
 }
 
+// @summary Api for send otp
+// @id SendOtp
+// @description Api for send otp to user phone
+// @tags AuthSvc
+// @Produce json
+// @Param input body request.OtpReq{} true "Phone number"
+// @Router /sendotp  [post]
+// @Success 200 {object} responce.Response{} "Otp send succesfully"
+// @Failure 400 {object} responce.Response{} "Failed to send otp"
 func (A *AuthHandler) SendOtp(C *gin.Context) {
 
 	var otpReq request.OtpReq
@@ -39,6 +48,15 @@ func (A *AuthHandler) SendOtp(C *gin.Context) {
 
 }
 
+// @summary Api for verify otp and auth
+// @id VerifyOtpAndAuth
+// @description Api for verify otp and authentication it will return token and user found or not
+// @tags AuthSvc
+// @Produce json
+// @Param input body request.VerifyOtpReq true "OTP and Phone number"
+// @Router /verifyotp  [post]
+// @Success 200 {object} responce.Response{} "Verifeid succesfully"
+// @Failure 400 {object} responce.Response{} "Invalid request"
 func (A *AuthHandler) VerifyOtpAndAuth(C *gin.Context) {
 	var verifyOtpReq request.VerifyOtpReq
 
@@ -58,6 +76,16 @@ func (A *AuthHandler) VerifyOtpAndAuth(C *gin.Context) {
 	C.JSON(resp.Code, resp)
 }
 
+// @summary Api for send user details
+// @id UserDetails
+// @description Api for send user basic detials
+// @tags AuthSvc
+// @Produce json
+// @Param input body request.UserDetails true "User details"
+// @Router /details [post]
+// @Success 201 {object} responce.Response{} "User detials added succesfully"
+// @Failure 400 {object} responce.Response{} "Invalid request"
+// @Param Authorization header string true "Insert your access token" default(Bearer )
 func (A *AuthHandler) UserDetails(C *gin.Context) {
 
 	_, ok := C.Get("userID")
