@@ -1,6 +1,7 @@
 package helper
 
 import (
+	"context"
 	"crypto/tls"
 	"crypto/x509"
 	"errors"
@@ -107,4 +108,9 @@ func ValidateJWTTokens(token string) (jwt.MapClaims, error) {
 
 	return claim, nil
 
+}
+
+func GetUserID(ctx context.Context) int32 {
+	userId := ctx.Value("userID")
+	return int32(userId.(float64))
 }

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/ashiqsabith123/api-gateway/pkg/models/request"
 	responce "github.com/ashiqsabith123/api-gateway/pkg/models/responce"
 	match "github.com/ashiqsabith123/api-gateway/pkg/services/match-svc/functions/interface"
 	"github.com/gin-gonic/gin"
@@ -22,19 +23,17 @@ func NewMatchHandler(mathcFunc match.MatchFunctions) *MatchHandler {
 // @ID upload-photos
 // @Accept multipart/form-data
 // @Produce json
-// @Param Authorization header string true "Bearer {token}" default("your_access_token") // Include this if authorization is required
-// @Param field_name formData string true "Value for the 'field_name' field"
+// @Security		BearerTokenAuth
 // @Param photos formData file true "Multiple photos to upload"
-// @Success 200 {object} ApiResponse "Photos uploaded successfully"
-// @Failure 400 {object} ApiResponse "Invalid request or contains other files"
-// @Failure 401 {object} ApiResponse "Unauthorized - User id not found"
-// @Router /upload-photos [post]
+// @Success 200 {object} responce.Response "Photos uploaded successfully"
+// @Failure 400 {object} responce.Response "Invalid request or contains other files"
+// @Failure 401 {object} responce.Response "Unauthorized - User id not found"
+// @Router /upload/photos [post]
 func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 
 	_, ok := C.Get("userID")
 
 	if !ok {
-
 		resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "User id not found")
 		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
 		return
@@ -55,7 +54,6 @@ func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 
 		contentType := fileHeader.Header.Get("Content-Type")
 		if contentType != "image/jpeg" {
-
 			resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "Contains other files")
 			fmt.Println("ree", resp)
 			C.AbortWithStatusJSON(http.StatusBadRequest, resp)
@@ -65,6 +63,34 @@ func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 	}
 
 	resp, ok := M.functions.UploadPhotos(C, files)
+
+	if !ok {
+		C.AbortWithStatusJSON(resp.Code, resp)
+		return
+	}
+
+	C.JSON(resp.Code, resp)
+
+}
+
+func (M *MatchHandler) SaveUserPrefrences(C *gin.Context) {
+	_, ok := C.Get("userID")
+
+	if !ok {
+		resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "User id not found")
+		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
+		return
+	}
+
+	var userPrefReq request.UserPreferences
+
+	if err := C.ShouldBindJSON(&userPrefReq); err != nil {
+		resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", err.Error())
+		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
+		return
+	}
+
+	resp, ok := M.functions.SaveUserPrefrences(C, userPrefReq)
 
 	if !ok {
 		C.AbortWithStatusJSON(resp.Code, resp)

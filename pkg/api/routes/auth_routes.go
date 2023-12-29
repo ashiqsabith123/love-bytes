@@ -7,7 +7,6 @@ import (
 )
 
 func AuthRoutes(user *gin.RouterGroup, authHandler *handler.AuthHandler) {
-
 	user.POST("/sendotp", authHandler.SendOtp)
 	user.POST("/verifyotp", authHandler.VerifyOtpAndAuth)
 

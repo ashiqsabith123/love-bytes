@@ -81,11 +81,11 @@ func (A *AuthHandler) VerifyOtpAndAuth(C *gin.Context) {
 // @description Api for send user basic detials
 // @tags AuthSvc
 // @Produce json
+// @Security		BearerTokenAuth
 // @Param input body request.UserDetails true "User details"
 // @Router /details [post]
 // @Success 201 {object} responce.Response{} "User detials added succesfully"
 // @Failure 400 {object} responce.Response{} "Invalid request"
-// @Param Authorization header string true "Insert your access token" default(Bearer )
 func (A *AuthHandler) UserDetails(C *gin.Context) {
 
 	_, ok := C.Get("userID")

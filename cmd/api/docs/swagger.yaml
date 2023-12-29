@@ -61,12 +61,6 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/request.UserDetails'
-      - default: Bearer
-        description: Insert your access token
-        in: header
-        name: Authorization
-        required: true
-        type: string
       produces:
       - application/json
       responses:
@@ -78,6 +72,8 @@ paths:
           description: Invalid request
           schema:
             $ref: '#/definitions/responce.Response'
+      security:
+      - BearerTokenAuth: []
       summary: Api for send user details
       tags:
       - AuthSvc
@@ -110,39 +106,32 @@ paths:
     post:
       consumes:
       - multipart/form-data
-      description: Api for upload user photos max 4 photos min 2 photos
-      operationId: UploadPhotos
+      description: Upload photos with additional fields using a multipart form
+      operationId: upload-photos
       parameters:
-      - description: File to upload
-        in: formData
-        name: file
-        required: true
-        type: file
-      - description: Value for the photos field
+      - description: Multiple photos to upload
         in: formData
         name: photos
         required: true
-        type: string
-      - default: Bearer
-        description: Insert your access token
-        in: header
-        name: Authorization
-        required: true
-        type: string
+        type: file
       produces:
       - application/json
       responses:
         "200":
-          description: Phoptos added succesfully
+          description: Photos uploaded successfully
           schema:
             $ref: '#/definitions/responce.Response'
         "400":
-          description: Invalid request
+          description: Invalid request or contains other files
           schema:
             $ref: '#/definitions/responce.Response'
-      summary: Api for upload photos
-      tags:
-      - MatchSvc
+        "401":
+          description: Unauthorized - User id not found
+          schema:
+            $ref: '#/definitions/responce.Response'
+      security:
+      - BearerTokenAuth: []
+      summary: Upload photos with additional fields
   /verifyotp:
     post:
       description: Api for verify otp and authentication it will return token and
@@ -169,4 +158,9 @@ paths:
       summary: Api for verify otp and auth
       tags:
       - AuthSvc
+securityDefinitions:
+  BearerTokenAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

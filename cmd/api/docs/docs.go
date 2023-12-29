@@ -18,6 +18,11 @@ const docTemplate = `{
     "paths": {
         "/details": {
             "post": {
+                "security": [
+                    {
+                        "BearerTokenAuth": []
+                    }
+                ],
                 "description": "Api for send user basic detials",
                 "produces": [
                     "application/json"
@@ -36,14 +41,6 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/request.UserDetails"
                         }
-                    },
-                    {
-                        "type": "string",
-                        "default": "Bearer",
-                        "description": "Insert your access token",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -102,51 +99,44 @@ const docTemplate = `{
         },
         "/upload/photos": {
             "post": {
-                "description": "Api for upload user photos max 4 photos min 2 photos",
+                "security": [
+                    {
+                        "BearerTokenAuth": []
+                    }
+                ],
+                "description": "Upload photos with additional fields using a multipart form",
                 "consumes": [
                     "multipart/form-data"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "tags": [
-                    "MatchSvc"
-                ],
-                "summary": "Api for upload photos",
-                "operationId": "UploadPhotos",
+                "summary": "Upload photos with additional fields",
+                "operationId": "upload-photos",
                 "parameters": [
                     {
                         "type": "file",
-                        "description": "File to upload",
-                        "name": "file",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "Value for the photos field",
+                        "description": "Multiple photos to upload",
                         "name": "photos",
                         "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "default": "Bearer",
-                        "description": "Insert your access token",
-                        "name": "Authorization",
-                        "in": "header",
                         "required": true
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Phoptos added succesfully",
+                        "description": "Photos uploaded successfully",
                         "schema": {
                             "$ref": "#/definitions/responce.Response"
                         }
                     },
                     "400": {
-                        "description": "Invalid request",
+                        "description": "Invalid request or contains other files",
+                        "schema": {
+                            "$ref": "#/definitions/responce.Response"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized - User id not found",
                         "schema": {
                             "$ref": "#/definitions/responce.Response"
                         }
@@ -257,6 +247,13 @@ const docTemplate = `{
                     "type": "integer"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "BearerTokenAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }`

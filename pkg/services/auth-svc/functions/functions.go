@@ -105,7 +105,7 @@ func (A *AuthFunctions) SaveUserDetails(ctx context.Context, userDetails request
 	}
 
 	resp, _ := clients.SaveUserDetais(ctx, &pb.UserDetailsReq{
-		UserID:      int32(ctx.Value("userID").(float64)),
+		UserID:      helper.GetUserID(ctx),
 		Fullname:    userDetails.Fullname,
 		Email:       userDetails.Email,
 		Location:    userDetails.Location,

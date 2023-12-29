@@ -60,6 +60,8 @@ github.com/ashiqsabith123/love-bytes-proto v0.0.0-20231218080127-43435b451bc3 h1
 github.com/ashiqsabith123/love-bytes-proto v0.0.0-20231218080127-43435b451bc3/go.mod h1:FDahrYqvMnat3GzBZs1QTRWTmt4xEG+I1jgU0SIrzjo=
 github.com/ashiqsabith123/love-bytes-proto v0.0.0-20231218105312-6a5494097649 h1:yhvzpJWqmHjJKkIDmZGJk5FiqYEi1qy1lTxCc73WiUI=
 github.com/ashiqsabith123/love-bytes-proto v0.0.0-20231218105312-6a5494097649/go.mod h1:FDahrYqvMnat3GzBZs1QTRWTmt4xEG+I1jgU0SIrzjo=
+github.com/ashiqsabith123/love-bytes-proto v0.0.0-20231228064500-4810da67953f h1:ok3g236Rfnx5A54zKIBCKBduu8NBh+Nhpg8Lcs2uYLw=
+github.com/ashiqsabith123/love-bytes-proto v0.0.0-20231228064500-4810da67953f/go.mod h1:FDahrYqvMnat3GzBZs1QTRWTmt4xEG+I1jgU0SIrzjo=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=
 github.com/bytedance/sonic v1.9.1 h1:6iJ6NqdoxCDr6mbY8h18oSO+cShGSMRGCEo7F2h0x8s=
 github.com/bytedance/sonic v1.9.1/go.mod h1:i736AoUSYt75HyZLoJW9ERYxcy6eaN6h4BZXU064P/U=

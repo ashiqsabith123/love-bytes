@@ -16,3 +16,16 @@ type UserDetails struct {
 	Dateofbirth string `json:"dob" validate:"required"`
 	Gender      string `json:"gender" validate:"required"`
 }
+
+type UserPreferences struct {
+	Height        string `json:"height" validate:"required"`
+	MaritalStatus string `json:"marital_status" validate:"required"`
+	Faith         string `json:"faith" validate:"required"`
+	MotherTongue  string `json:"mother_tongue" validate:"required"`
+	SmokeStatus   string `json:"smoke_status" validate:"required"`
+	AlcoholStatus string `json:"alcohol_status" validate:"required"`
+	SettleStatus  string `json:"settle_status" validate:"required"`
+	Hobbies       string `json:"hobbies" validate:"required"`
+	TeaPerson     string `json:"tea_person" validate:"required"`
+	LoveLanguage  string `json:"love_language" validate:"required"`
+}

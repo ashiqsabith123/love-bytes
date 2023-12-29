@@ -19,6 +19,9 @@ type Server struct {
 // @description Fully fuctional dating app API
 // @contact ashiqsabith328@gmail.com
 // @host localhost:8081/user
+// @securityDefinitions.apikey	BearerTokenAuth
+// @in							header
+// @name						Authorization
 func NewServer(authHandler *handler.AuthHandler, matchHanlder *handler.MatchHandler) *Server {
 
 	server := gin.Default()

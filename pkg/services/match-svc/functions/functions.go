@@ -8,6 +8,7 @@ import (
 	"net/http"
 
 	"github.com/ashiqsabith123/api-gateway/pkg/helper"
+	"github.com/ashiqsabith123/api-gateway/pkg/models/request"
 	"github.com/ashiqsabith123/api-gateway/pkg/models/responce"
 	client "github.com/ashiqsabith123/api-gateway/pkg/services/match-svc/client/interface"
 	interfaces "github.com/ashiqsabith123/api-gateway/pkg/services/match-svc/functions/interface"
@@ -28,6 +29,8 @@ func NewMatchFunctions(client client.MatchClient) interfaces.MatchFunctions {
 }
 
 func (M *MatchFunctions) UploadPhotos(ctx context.Context, files []*multipart.FileHeader) (responce.Response, bool) {
+
+	
 
 	if len(files) < 2 || len(files) > 4 {
 		response := helper.CreateResponse(http.StatusBadRequest, "Rquired min 2 photos and max 4 photos", "Invalid photos", nil)
@@ -67,7 +70,7 @@ func (M *MatchFunctions) UploadPhotos(ctx context.Context, files []*multipart.Fi
 			}
 
 			chunk := pb.PhotoRequest{
-				UserID:    1,
+				UserID:    helper.GetUserID(ctx),
 				ImageData: buffer[:n],
 			}
 
@@ -98,4 +101,39 @@ func (M *MatchFunctions) UploadPhotos(ctx context.Context, files []*multipart.Fi
 
 	return response, true
 
+}
+
+func (M *MatchFunctions) SaveUserPrefrences(ctx context.Context, userPref request.UserPreferences) (responce.Response, bool) {
+	
+
+	err := helper.Validator(userPref)
+
+	if err != nil {
+		response := helper.CreateResponse(400, "Data is not in proper format", "Invalid fields", nil)
+		return response, false
+	}
+
+	resp, _ :=clients.SaveUserPrefrences(ctx,&pb.UserPrefrencesRequest{
+     UserId: helper.GetUserID(ctx),
+	 Height: userPref.Height,
+	 MaritalStatus: userPref.MaritalStatus,
+	 Faith: userPref.Faith,
+	 MotherTounge: userPref.MotherTongue,
+	 SmokeStatus: userPref.SmokeStatus,
+	 AlcoholStatus: userPref.AlcoholStatus,
+	 SettleStatus: userPref.SettleStatus,
+	 Hobbies: userPref.Hobbies,
+	 TeaPerson: userPref.TeaPerson,
+	 LoveLanguage: userPref.LoveLanguage,
+
+	})
+
+	if resp.Error != nil {
+		response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
+		return response, false
+	}
+
+	response := helper.CreateResponse(resp.Code, resp.Message, nil, nil)
+
+	return response, true
 }
