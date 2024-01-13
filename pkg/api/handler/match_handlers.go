@@ -7,6 +7,7 @@ import (
 	"github.com/ashiqsabith123/api-gateway/pkg/models/request"
 	responce "github.com/ashiqsabith123/api-gateway/pkg/models/responce"
 	match "github.com/ashiqsabith123/api-gateway/pkg/services/match-svc/functions/interface"
+	Const "github.com/ashiqsabith123/love-bytes-proto/constants"
 	"github.com/gin-gonic/gin"
 )
 
@@ -34,7 +35,7 @@ func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 	_, ok := C.Get("userID")
 
 	if !ok {
-		resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "User id not found")
+		resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, Const.USER_ID_NOT_FOUND)
 		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
 		return
 	}
@@ -43,7 +44,7 @@ func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 
 	if err != nil {
 
-		resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "No photos found")
+		resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, "No photos found")
 		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
 		return
 	}
@@ -54,7 +55,7 @@ func (M *MatchHandler) UploadPhotos(C *gin.Context) {
 
 		contentType := fileHeader.Header.Get("Content-Type")
 		if contentType != "image/jpeg" {
-			resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "Contains other files")
+			resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, "Contains other files")
 			fmt.Println("ree", resp)
 			C.AbortWithStatusJSON(http.StatusBadRequest, resp)
 			return
@@ -77,7 +78,7 @@ func (M *MatchHandler) SaveUserPrefrences(C *gin.Context) {
 	_, ok := C.Get("userID")
 
 	if !ok {
-		resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", "User id not found")
+		resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, Const.USER_ID_NOT_FOUND)
 		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
 		return
 	}
@@ -85,7 +86,7 @@ func (M *MatchHandler) SaveUserPrefrences(C *gin.Context) {
 	var userPrefReq request.UserPreferences
 
 	if err := C.ShouldBindJSON(&userPrefReq); err != nil {
-		resp := responce.ErrorReposonce(http.StatusBadRequest, "Invalid request", err.Error())
+		resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, err.Error())
 		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
 		return
 	}
@@ -98,5 +99,19 @@ func (M *MatchHandler) SaveUserPrefrences(C *gin.Context) {
 	}
 
 	C.JSON(resp.Code, resp)
+
+}
+
+func (M *MatchHandler) GetMatches(C *gin.Context) {
+	// _, ok := C.Get("userID")
+
+	// if !ok {
+	// 	resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, Const.USER_ID_NOT_FOUND)
+	// 	C.AbortWithStatusJSON(http.StatusBadRequest, resp)
+	// 	return
+	// }
+
+	M.functions.GetMatches()
+
 
 }

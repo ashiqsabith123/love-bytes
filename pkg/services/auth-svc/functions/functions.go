@@ -71,12 +71,13 @@ func (A *AuthFunctions) VerifyOtpAndAuth(verifyOtp request.VerifyOtpReq) (respon
 
 	if err != nil {
 		fmt.Println("Errr", err)
-
 	}
 
-	if resp.Error != nil {
-		response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
-		return response, false
+	if resp != nil{
+		if resp.Error != nil {
+			response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
+			return response, false
+		}
 	}
 
 	var tokenData pb.TokenResp

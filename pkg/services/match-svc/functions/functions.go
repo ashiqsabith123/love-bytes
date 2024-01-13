@@ -30,8 +30,6 @@ func NewMatchFunctions(client client.MatchClient) interfaces.MatchFunctions {
 
 func (M *MatchFunctions) UploadPhotos(ctx context.Context, files []*multipart.FileHeader) (responce.Response, bool) {
 
-	
-
 	if len(files) < 2 || len(files) > 4 {
 		response := helper.CreateResponse(http.StatusBadRequest, "Rquired min 2 photos and max 4 photos", "Invalid photos", nil)
 		return response, false
@@ -58,7 +56,7 @@ func (M *MatchFunctions) UploadPhotos(ctx context.Context, files []*multipart.Fi
 		buffer := make([]byte, 8024)
 
 		for {
-			n, err := file.Read(buffer)
+			bufferLen, err := file.Read(buffer)
 			if err != nil {
 				if err == io.EOF {
 					break
@@ -71,10 +69,10 @@ func (M *MatchFunctions) UploadPhotos(ctx context.Context, files []*multipart.Fi
 
 			chunk := pb.PhotoRequest{
 				UserID:    helper.GetUserID(ctx),
-				ImageData: buffer[:n],
+				ImageData: buffer[:bufferLen],
 			}
 
-			if n < len(buffer) {
+			if bufferLen < len(buffer) {
 				chunk.LastChunk = true
 			}
 
@@ -92,19 +90,23 @@ func (M *MatchFunctions) UploadPhotos(ctx context.Context, files []*multipart.Fi
 		fmt.Println("err", err)
 	}
 
-	if resp.Error != nil {
-		response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
-		return response, false
+	if resp != nil {
+		if resp.Error != nil {
+			response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
+			return response, false
+		}
+
+		response := helper.CreateResponse(resp.Code, resp.Message, nil, nil)
+
+		return response, true
 	}
 
-	response := helper.CreateResponse(resp.Code, resp.Message, nil, nil)
-
-	return response, true
+	response := helper.CreateResponse(500, "Server error", "The service is not responding ", nil)
+	return response, false
 
 }
 
 func (M *MatchFunctions) SaveUserPrefrences(ctx context.Context, userPref request.UserPreferences) (responce.Response, bool) {
-	
 
 	err := helper.Validator(userPref)
 
@@ -113,19 +115,18 @@ func (M *MatchFunctions) SaveUserPrefrences(ctx context.Context, userPref reques
 		return response, false
 	}
 
-	resp, _ :=clients.SaveUserPrefrences(ctx,&pb.UserPrefrencesRequest{
-     UserId: helper.GetUserID(ctx),
-	 Height: userPref.Height,
-	 MaritalStatus: userPref.MaritalStatus,
-	 Faith: userPref.Faith,
-	 MotherTounge: userPref.MotherTongue,
-	 SmokeStatus: userPref.SmokeStatus,
-	 AlcoholStatus: userPref.AlcoholStatus,
-	 SettleStatus: userPref.SettleStatus,
-	 Hobbies: userPref.Hobbies,
-	 TeaPerson: userPref.TeaPerson,
-	 LoveLanguage: userPref.LoveLanguage,
-
+	resp, _ := clients.SaveUserPrefrences(ctx, &pb.UserPrefrencesRequest{
+		UserId:        helper.GetUserID(ctx),
+		Height:        userPref.Height,
+		MaritalStatus: userPref.MaritalStatus,
+		Faith:         userPref.Faith,
+		MotherTounge:  userPref.MotherTongue,
+		SmokeStatus:   userPref.SmokeStatus,
+		AlcoholStatus: userPref.AlcoholStatus,
+		SettleStatus:  userPref.SettleStatus,
+		Hobbies:       userPref.Hobbies,
+		TeaPerson:     userPref.TeaPerson,
+		LoveLanguage:  userPref.LoveLanguage,
 	})
 
 	if resp.Error != nil {
@@ -136,4 +137,10 @@ func (M *MatchFunctions) SaveUserPrefrences(ctx context.Context, userPref reques
 	response := helper.CreateResponse(resp.Code, resp.Message, nil, nil)
 
 	return response, true
+}
+
+func (M *MatchFunctions) GetMatches() {
+	clients.GetMatchedUsers(context.TODO(), &pb.UserIdRequest{
+		UserID: 1,
+	})
 }

@@ -8,4 +8,5 @@ import (
 func MatchRoutes(user *gin.RouterGroup, matchHandler *handler.MatchHandler) {
 	user.POST("/upload/photos", matchHandler.UploadPhotos)
 	user.POST("/save/prefrences", matchHandler.SaveUserPrefrences)
+	user.GET("/match", matchHandler.GetMatches)
 }

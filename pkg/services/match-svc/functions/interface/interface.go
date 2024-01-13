@@ -11,4 +11,5 @@ import (
 type MatchFunctions interface {
 	UploadPhotos(ctx context.Context, files []*multipart.FileHeader) (responce.Response, bool)
 	SaveUserPrefrences(ctx context.Context, userPref request.UserPreferences) (responce.Response, bool)
+	GetMatches()
 }
