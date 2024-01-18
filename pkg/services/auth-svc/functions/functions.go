@@ -73,7 +73,7 @@ func (A *AuthFunctions) VerifyOtpAndAuth(verifyOtp request.VerifyOtpReq) (respon
 		fmt.Println("Errr", err)
 	}
 
-	if resp != nil{
+	if resp != nil {
 		if resp.Error != nil {
 			response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
 			return response, false
@@ -122,4 +122,6 @@ func (A *AuthFunctions) SaveUserDetails(ctx context.Context, userDetails request
 	response := helper.CreateResponse(resp.Code, resp.Message, nil, nil)
 
 	return response, true
+
+	
 }

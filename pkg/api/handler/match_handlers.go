@@ -3,6 +3,7 @@ package handler
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/ashiqsabith123/api-gateway/pkg/models/request"
 	responce "github.com/ashiqsabith123/api-gateway/pkg/models/responce"
@@ -103,15 +104,61 @@ func (M *MatchHandler) SaveUserPrefrences(C *gin.Context) {
 }
 
 func (M *MatchHandler) GetMatches(C *gin.Context) {
-	// _, ok := C.Get("userID")
+	_, ok := C.Get("userID")
 
-	// if !ok {
-	// 	resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, Const.USER_ID_NOT_FOUND)
-	// 	C.AbortWithStatusJSON(http.StatusBadRequest, resp)
-	// 	return
-	// }
+	if !ok {
+		resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, Const.USER_ID_NOT_FOUND)
+		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
+		return
+	}
 
-	M.functions.GetMatches()
+	resp, ok := M.functions.GetMatches(C)
 
+	if !ok {
+		C.AbortWithStatusJSON(resp.Code, resp)
+		return
+	}
+
+	C.JSON(resp.Code, resp)
+
+}
+
+func (M *MatchHandler) CreateIntrest(C *gin.Context) {
+	_, ok := C.Get("userID")
+
+	if !ok {
+		resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, Const.USER_ID_NOT_FOUND)
+		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
+		return
+	}
+
+	reciverId := C.Param("recieverId")
+
+	if reciverId == "" {
+		if !ok {
+			resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, "Reviver ID not found")
+			C.AbortWithStatusJSON(http.StatusBadRequest, resp)
+			return
+		}
+	}
+
+	var intrestReq request.IntrestReq
+
+	ID, err := strconv.Atoi(reciverId)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	intrestReq.RecieverId = uint(ID)
+
+	resp, ok := M.functions.CreateIntrest(C, intrestReq)
+
+	if !ok {
+		C.AbortWithStatusJSON(resp.Code, resp)
+		return
+	}
+
+	C.JSON(resp.Code, resp)
 
 }

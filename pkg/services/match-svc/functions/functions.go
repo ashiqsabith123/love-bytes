@@ -2,6 +2,7 @@ package functions
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"io"
 	"mime/multipart"
@@ -13,6 +14,8 @@ import (
 	client "github.com/ashiqsabith123/api-gateway/pkg/services/match-svc/client/interface"
 	interfaces "github.com/ashiqsabith123/api-gateway/pkg/services/match-svc/functions/interface"
 	"github.com/ashiqsabith123/love-bytes-proto/match/pb"
+	"github.com/jinzhu/copier"
+	"google.golang.org/protobuf/proto"
 )
 
 type MatchFunctions struct {
@@ -139,8 +142,57 @@ func (M *MatchFunctions) SaveUserPrefrences(ctx context.Context, userPref reques
 	return response, true
 }
 
-func (M *MatchFunctions) GetMatches() {
-	clients.GetMatchedUsers(context.TODO(), &pb.UserIdRequest{
-		UserID: 1,
+func (M *MatchFunctions) GetMatches(ctx context.Context) (responce.Response, bool) {
+
+	resp, _ := clients.GetMatchedUsers(context.TODO(), &pb.UserIdRequest{
+		UserID: helper.GetUserID(ctx),
 	})
+
+	if resp != nil {
+		if resp.Error != nil {
+			response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
+			return response, false
+		}
+
+		var match pb.MatchedUsersResponse
+
+		if err := proto.Unmarshal(resp.Data.Value, &match); err != nil {
+			response := helper.CreateResponse(resp.Code, resp.Message, "Error unmarshaling data", nil)
+			return response, false
+		}
+
+		var matchedUsers responce.MatchedUsersResponse
+
+		copier.Copy(&matchedUsers, &match)
+
+		response := helper.CreateResponse(resp.Code, resp.Message, nil, matchedUsers)
+		return response, true
+	}
+
+	response := helper.CreateResponse(http.StatusInternalServerError, "Service retunrned nill", errors.New("server error"), nil)
+
+	return response, false
+}
+
+func (M *MatchFunctions) CreateIntrest(ctx context.Context, intrest request.IntrestReq) (responce.Response, bool) {
+
+	resp, _ := clients.CreateIntrests(ctx, &pb.IntrestRequest{
+		SenderID:  uint32(helper.GetUserID(ctx)),
+		ReciverID: uint32(intrest.RecieverId),
+	})
+
+	if resp != nil {
+		if resp.Error != nil {
+			response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
+			return response, false
+		}
+
+		response := helper.CreateResponse(resp.Code, resp.Message, nil, nil)
+		return response, true
+	}
+
+	response := helper.CreateResponse(http.StatusInternalServerError, "Service retunrned nill", errors.New("server error"), nil)
+
+	return response, false
+
 }

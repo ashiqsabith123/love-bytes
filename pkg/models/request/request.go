@@ -29,3 +29,8 @@ type UserPreferences struct {
 	TeaPerson     string `json:"tea_person" validate:"required"`
 	LoveLanguage  string `json:"love_language" validate:"required"`
 }
+
+type IntrestReq struct {
+	RecieverId uint
+	Status     string
+}
