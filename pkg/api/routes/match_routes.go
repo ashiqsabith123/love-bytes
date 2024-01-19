@@ -9,5 +9,10 @@ func MatchRoutes(user *gin.RouterGroup, matchHandler *handler.MatchHandler) {
 	user.POST("/upload/photos", matchHandler.UploadPhotos)
 	user.POST("/save/prefrences", matchHandler.SaveUserPrefrences)
 	user.GET("/match", matchHandler.GetMatches)
-	user.POST("/create/intrest/:recieverId",matchHandler.CreateIntrest)
+
+	interest := user.Group("/interest")
+	{
+		interest.POST("/create/:recieverId", matchHandler.CreateIntrest)
+	}
+
 }

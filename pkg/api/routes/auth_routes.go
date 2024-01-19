@@ -7,8 +7,12 @@ import (
 )
 
 func AuthRoutes(user *gin.RouterGroup, authHandler *handler.AuthHandler) {
-	user.POST("/sendotp", authHandler.SendOtp)
-	user.POST("/verifyotp", authHandler.VerifyOtpAndAuth)
+
+	otp := user.Group("/otp")
+	{
+		otp.POST("/send", authHandler.SendOtp)
+		otp.POST("/verify", authHandler.VerifyOtpAndAuth)
+	}
 
 	user.Use(middlewares.Authenticate)
 	{
