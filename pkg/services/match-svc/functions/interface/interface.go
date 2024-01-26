@@ -13,4 +13,5 @@ type MatchFunctions interface {
 	SaveUserPrefrences(ctx context.Context, userPref request.UserPreferences) (responce.Response, bool)
 	GetMatches(ctx context.Context) (responce.Response, bool)
 	CreateIntrest(ctx context.Context, intrest request.IntrestReq) (responce.Response, bool)
+	GetAllIntrestRequests(ctx context.Context) (responce.Response, bool)
 }

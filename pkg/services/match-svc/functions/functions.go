@@ -178,7 +178,7 @@ func (M *MatchFunctions) CreateIntrest(ctx context.Context, intrest request.Intr
 
 	resp, _ := clients.CreateIntrests(ctx, &pb.IntrestRequest{
 		SenderID:  uint32(helper.GetUserID(ctx)),
-		ReciverID: uint32(intrest.RecieverId),
+		ReceiverID: uint32(intrest.RecieverId),
 	})
 
 	if resp != nil {
@@ -195,4 +195,31 @@ func (M *MatchFunctions) CreateIntrest(ctx context.Context, intrest request.Intr
 
 	return response, false
 
+}
+
+func (M *MatchFunctions) GetAllIntrestRequests(ctx context.Context) (responce.Response, bool) {
+	resp, _ := clients.GetAllInteretsRequests(ctx, &pb.UserIdRequest{
+		UserID: helper.GetUserID(ctx),
+	})
+
+	if resp != nil {
+		if resp.Error != nil {
+			response := helper.CreateResponse(resp.Code, resp.Message, string(resp.Error.Value), nil)
+			return response, false
+		}
+
+		var interests pb.IntrestRequests
+
+		if err := proto.Unmarshal(resp.Data.Value, &interests); err != nil {
+			response := helper.CreateResponse(resp.Code, resp.Message, "Error unmarshaling data", nil)
+			return response, false
+		}
+
+		response := helper.CreateResponse(resp.Code, resp.Message, nil, interests)
+		return response, true
+	}
+
+	response := helper.CreateResponse(http.StatusInternalServerError, "Service retunrned nill", errors.New("server error"), nil)
+
+	return response, false
 }

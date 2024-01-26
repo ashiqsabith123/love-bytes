@@ -72,6 +72,14 @@ github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240116091652-05fd9cfd3daa h1
 github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240116091652-05fd9cfd3daa/go.mod h1:FbSIbTUQLH9jnl8QRsGjVWEXF/HviIt+l6xM9oXsX7o=
 github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240117090600-1012d8a6e78b h1:bRls+IZNr7ezJT3U2zCOmUZ+XikRINAls3YFQH/7KYQ=
 github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240117090600-1012d8a6e78b/go.mod h1:FbSIbTUQLH9jnl8QRsGjVWEXF/HviIt+l6xM9oXsX7o=
+github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240123100429-5f8a28f2ddc6 h1:lFlSYOXftsowi27RplK6KJVDNDaLEifwEfbJBMXpvkQ=
+github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240123100429-5f8a28f2ddc6/go.mod h1:FbSIbTUQLH9jnl8QRsGjVWEXF/HviIt+l6xM9oXsX7o=
+github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240124064946-9e5eab8fcf86 h1:HfRVtN98LqZQzWjYcx5UQ0hbnLkN9bpaUcv1kQ4c2aM=
+github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240124064946-9e5eab8fcf86/go.mod h1:FbSIbTUQLH9jnl8QRsGjVWEXF/HviIt+l6xM9oXsX7o=
+github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240124074618-d3e9a7bc188b h1:zQz5rbopDyXDrMzKhM/yi8BJPKCwoY/4gluBYT46ctY=
+github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240124074618-d3e9a7bc188b/go.mod h1:FbSIbTUQLH9jnl8QRsGjVWEXF/HviIt+l6xM9oXsX7o=
+github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240126051103-d0d46f98463e h1:rp/FJW5mm3BgmMIMCsmGGCV9muEBtuoWQBKmN8bONZo=
+github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240126051103-d0d46f98463e/go.mod h1:FbSIbTUQLH9jnl8QRsGjVWEXF/HviIt+l6xM9oXsX7o=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=
 github.com/bytedance/sonic v1.9.1 h1:6iJ6NqdoxCDr6mbY8h18oSO+cShGSMRGCEo7F2h0x8s=
 github.com/bytedance/sonic v1.9.1/go.mod h1:i736AoUSYt75HyZLoJW9ERYxcy6eaN6h4BZXU064P/U=

@@ -13,6 +13,8 @@ func MatchRoutes(user *gin.RouterGroup, matchHandler *handler.MatchHandler) {
 	interest := user.Group("/interest")
 	{
 		interest.POST("/create/:recieverId", matchHandler.CreateIntrest)
+		interest.PATCH("/status/:id/:status")
+		interest.GET("/get/all", matchHandler.GetAllIntrestRequests)
 	}
 
 }

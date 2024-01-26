@@ -119,7 +119,13 @@ func (M *MatchHandler) GetMatches(C *gin.Context) {
 		return
 	}
 
+	
+
 	C.JSON(resp.Code, resp)
+
+	// C.JSON(500, gin.H{
+	// 	"error": "server error",
+	// })
 
 }
 
@@ -161,4 +167,23 @@ func (M *MatchHandler) CreateIntrest(C *gin.Context) {
 
 	C.JSON(resp.Code, resp)
 
+}
+
+func (M *MatchHandler) GetAllIntrestRequests(C *gin.Context) {
+	_, ok := C.Get("userID")
+
+	if !ok {
+		resp := responce.ErrorReposonce(http.StatusBadRequest, Const.INVALID_REQUEST, Const.USER_ID_NOT_FOUND)
+		C.AbortWithStatusJSON(http.StatusBadRequest, resp)
+		return
+	}
+
+	resp, ok := M.functions.GetAllIntrestRequests(C)
+
+	if !ok {
+		C.AbortWithStatusJSON(resp.Code, resp)
+		return
+	}
+
+	C.JSON(resp.Code, resp)
 }
