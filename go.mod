@@ -53,7 +53,7 @@ require (
 )
 
 require (
-	github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240126051103-d0d46f98463e
+	github.com/ashiqsabith123/love-bytes-proto v0.0.0-20240129094657-d57897526099
 	github.com/bytedance/sonic v1.10.2 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20230717121745-296ad89f973d // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
@@ -62,6 +62,8 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.16.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
+	github.com/graphql-go/graphql v0.8.1
+	github.com/graphql-go/handler v0.2.3
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.6 // indirect
 	github.com/leodido/go-urn v1.2.4 // indirect

@@ -9,6 +9,8 @@ type MatchedUsersResponse struct {
 	MatchedUsers []*MatchedUsers `json:"matchedUsers,omitempty"`
 }
 
+
+
 type MatchedUsers struct {
 	UserID     int32     `json:"userID,omitempty"`
 	Name       string    `json:"name,omitempty"`

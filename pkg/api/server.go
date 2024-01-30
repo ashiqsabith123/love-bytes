@@ -22,7 +22,7 @@ type Server struct {
 // @securityDefinitions.apikey	BearerTokenAuth
 // @in							header
 // @name						Authorization
-func NewServer(authHandler *handler.AuthHandler, matchHanlder *handler.MatchHandler) *Server {
+func NewServer(authHandler *handler.AuthHandler, matchHanlder *handler.MatchHandler, notificationHandler *handler.NotificationHandler) *Server {
 
 	server := gin.Default()
 
@@ -33,6 +33,7 @@ func NewServer(authHandler *handler.AuthHandler, matchHanlder *handler.MatchHand
 
 	routes.AuthRoutes(user, authHandler)
 	routes.MatchRoutes(user, matchHanlder)
+	routes.NotificationRoutes(user, notificationHandler)
 
 	return &Server{
 		engine: server,

@@ -89,6 +89,6 @@ func Authenticate(C *gin.Context) {
 
 	// C.Set("userID", claim["id"].(float64))
 
-	C.Set("userID", float64(11))
+	C.Set("userID", float64(2))
 
 }

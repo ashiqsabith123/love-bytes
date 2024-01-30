@@ -1,0 +1,374 @@
+General Logger:	2024/01/27 14:14:05 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/27 14:14:05 client.go:36: Notification service connected at port  50053
+General Logger:	2024/01/27 14:14:15 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/27 14:14:15 client.go:36: Notification service connected at port  50053
+General Logger:	2024/01/27 14:16:08 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/27 14:16:08 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/27 14:16:08 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/27 14:16:08 client.go:36: Notification service connected at port  50053
+General Logger:	2024/01/27 14:17:13 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/27 14:17:13 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/27 14:17:13 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/27 14:17:13 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 11:38:10 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 11:38:10 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 11:38:10 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 11:38:10 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 11:38:27 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 11:38:27 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 11:38:27 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 11:38:27 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 11:48:07 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 11:48:07 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 11:48:07 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 11:48:07 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 11:48:50 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 11:48:50 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 11:48:50 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 11:48:50 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 12:05:22 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 12:05:22 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 12:05:22 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 12:05:22 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 12:06:42 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 12:06:42 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 12:06:42 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 12:06:42 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 12:12:16 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 12:12:16 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 12:12:16 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 12:12:16 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 12:12:38 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 12:12:38 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 12:12:38 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 12:12:38 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 12:13:16 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 12:13:16 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 12:13:16 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 12:13:16 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 12:14:06 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 12:14:06 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 12:14:06 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 12:14:06 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 12:18:04 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 12:18:04 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 12:18:04 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 12:18:04 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 12:19:14 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 12:19:14 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 12:19:14 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 12:19:14 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 12:34:20 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 12:34:20 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 12:34:20 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 12:34:20 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 12:57:41 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 12:57:41 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 12:57:41 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 12:57:41 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 13:01:09 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 13:01:09 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 13:01:09 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 13:01:09 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 13:03:21 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 13:03:21 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 13:03:21 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 13:03:21 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 13:06:35 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 13:06:35 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 13:06:35 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 13:06:35 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 13:28:04 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 13:28:04 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 13:28:04 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 13:28:04 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 13:29:39 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 13:29:39 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 13:29:39 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 13:29:39 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 14:04:20 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 14:04:20 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 14:04:20 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 14:04:20 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 14:32:44 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 14:32:44 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 14:32:44 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 14:32:44 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 14:41:22 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 14:41:22 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 14:41:22 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 14:41:22 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:01:39 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:01:39 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:01:39 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:01:39 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:05:01 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:05:01 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:05:01 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:05:01 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:05:27 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:05:27 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:05:27 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:05:27 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:06:00 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:06:00 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:06:00 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:06:00 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:06:40 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:06:40 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:06:40 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:06:40 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:08:28 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:08:28 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:08:28 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:08:28 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:08:42 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:08:42 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:08:42 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:08:42 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:12:04 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:12:04 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:12:04 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:12:04 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:15:16 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:15:16 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:15:16 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:15:16 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:16:01 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:16:01 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:16:01 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:16:01 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:30:12 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:30:12 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:30:12 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:30:12 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:40:41 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:40:41 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:40:41 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:40:41 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:51:48 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:51:48 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:51:48 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:51:48 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:52:38 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:52:38 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:52:38 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:52:38 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:52:51 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:52:51 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:52:51 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:52:51 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 15:53:20 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 15:53:20 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 15:53:20 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 15:53:20 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 16:55:27 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 16:55:27 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 16:55:27 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 16:55:27 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 16:59:04 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 16:59:04 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 16:59:04 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 16:59:04 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 18:29:37 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 18:29:37 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 18:29:37 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 18:29:37 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 18:34:01 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 18:34:01 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 18:34:01 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 18:34:01 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 18:51:34 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 18:51:34 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 18:51:34 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 18:51:34 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 18:51:53 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 18:51:53 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 18:51:53 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 18:51:53 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 18:54:41 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 18:54:41 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 18:54:41 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 18:54:41 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 18:55:20 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 18:55:20 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 18:55:20 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 18:55:20 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 19:00:18 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 19:00:18 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 19:00:18 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 19:00:18 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 19:00:36 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 19:00:36 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 19:00:36 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 19:00:36 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/29 19:00:58 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/29 19:00:58 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/29 19:00:58 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/29 19:00:58 client.go:36: Notification service connected at port  :50053
+General Logger:	2024/01/30 10:20:54 logger.go:29: 
+
+
+Application restarted ---------
+General Logger:	2024/01/30 10:20:54 client.go:36: Auth service connected at port  :50051
+General Logger:	2024/01/30 10:20:54 client.go:36: Match service connected at port  :50052
+General Logger:	2024/01/30 10:20:54 client.go:36: Notification service connected at port  :50053

@@ -1,13 +1,11 @@
 package client
 
 import (
-	"fmt"
-	"log"
-
 	"github.com/ashiqsabith123/api-gateway/pkg/config"
 	intefaces "github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/client/interface"
 
 	"github.com/ashiqsabith123/love-bytes-proto/auth/pb"
+	logs "github.com/ashiqsabith123/love-bytes-proto/log"
 	"google.golang.org/grpc"
 )
 
@@ -32,10 +30,10 @@ func (A *AuthClient) InitAuthClient() {
 	// }
 	Conn, err = grpc.Dial(A.config.PORTS.AuthSvcPort, grpc.WithInsecure())
 	if err != nil {
-		log.Fatal("Could not connect the auth server:", err)
+		logs.ErrLog.Fatal("Could not connect the auth server:", err)
 	}
 
-	fmt.Println("Auth service connected at port ", A.config.PORTS.AuthSvcPort)
+	logs.GenLog.Println("Auth service connected at port ", A.config.PORTS.AuthSvcPort)
 
 }
 

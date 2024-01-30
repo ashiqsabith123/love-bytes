@@ -119,8 +119,6 @@ func (M *MatchHandler) GetMatches(C *gin.Context) {
 		return
 	}
 
-	
-
 	C.JSON(resp.Code, resp)
 
 	// C.JSON(500, gin.H{
@@ -159,6 +157,8 @@ func (M *MatchHandler) CreateIntrest(C *gin.Context) {
 	intrestReq.RecieverId = uint(ID)
 
 	resp, ok := M.functions.CreateIntrest(C, intrestReq)
+
+	fmt.Println(resp)
 
 	if !ok {
 		C.AbortWithStatusJSON(resp.Code, resp)

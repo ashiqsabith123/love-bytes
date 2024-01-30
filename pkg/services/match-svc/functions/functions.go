@@ -169,17 +169,25 @@ func (M *MatchFunctions) GetMatches(ctx context.Context) (responce.Response, boo
 		return response, true
 	}
 
-	response := helper.CreateResponse(http.StatusInternalServerError, "Service retunrned nill", errors.New("server error"), nil)
+	response := helper.CreateResponse(http.StatusInternalServerError, "Service retunrned nill", errors.New("server error").Error(), nil)
 
 	return response, false
 }
 
 func (M *MatchFunctions) CreateIntrest(ctx context.Context, intrest request.IntrestReq) (responce.Response, bool) {
 
-	resp, _ := clients.CreateIntrests(ctx, &pb.IntrestRequest{
-		SenderID:  uint32(helper.GetUserID(ctx)),
-		ReceiverID: uint32(intrest.RecieverId),
-	})
+	var resp *pb.MatchResponse
+
+	for i := 0; i < 5; i++ {
+		resp, _ = clients.CreateIntrests(ctx, &pb.IntrestRequest{
+			SenderID:   uint32(helper.GetUserID(ctx)),
+			ReceiverID: uint32(intrest.RecieverId),
+		})
+
+		if resp != nil {
+			break
+		}
+	}
 
 	if resp != nil {
 		if resp.Error != nil {
@@ -191,7 +199,7 @@ func (M *MatchFunctions) CreateIntrest(ctx context.Context, intrest request.Intr
 		return response, true
 	}
 
-	response := helper.CreateResponse(http.StatusInternalServerError, "Service retunrned nill", errors.New("server error"), nil)
+	response := helper.CreateResponse(http.StatusInternalServerError, "Service retunrned nill", errors.New("server error").Error(), nil)
 
 	return response, false
 

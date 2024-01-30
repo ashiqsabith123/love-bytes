@@ -5,6 +5,7 @@ import "github.com/spf13/viper"
 type Ports struct {
 	AuthSvcPort  string `mapstructure:"auth-svc-port"`
 	MatchSvcPort string `mapstructure:"match-svc-port"`
+	NotificationSvcPort string `mapstructure:"notification-svc-port"`
 }
 
 type JWTConfig struct {

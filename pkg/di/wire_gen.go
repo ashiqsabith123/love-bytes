@@ -14,6 +14,8 @@ import (
 	"github.com/ashiqsabith123/api-gateway/pkg/services/auth-svc/functions"
 	client2 "github.com/ashiqsabith123/api-gateway/pkg/services/match-svc/client"
 	functions2 "github.com/ashiqsabith123/api-gateway/pkg/services/match-svc/functions"
+	client3 "github.com/ashiqsabith123/api-gateway/pkg/services/notification-svc/client"
+	functions3 "github.com/ashiqsabith123/api-gateway/pkg/services/notification-svc/functions"
 )
 
 // Injectors from wire.go:
@@ -25,6 +27,9 @@ func InitializeApi(config2 config.Config) *server.Server {
 	matchClient := client2.NewMatchClient(config2)
 	matchFunctions := functions2.NewMatchFunctions(matchClient)
 	matchHandler := handler.NewMatchHandler(matchFunctions)
-	serverServer := server.NewServer(authHandler, matchHandler)
+	notificationClient := client3.NewNotificationClient(config2)
+	notificationFunctions := functions3.NewNotificationFunctions(notificationClient)
+	notificationHandler := handler.NewNotificationHandler(notificationFunctions)
+	serverServer := server.NewServer(authHandler, matchHandler, notificationHandler)
 	return serverServer
 }

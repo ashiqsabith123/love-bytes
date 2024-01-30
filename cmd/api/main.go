@@ -6,6 +6,7 @@ import (
 
 	"github.com/ashiqsabith123/api-gateway/pkg/config"
 	"github.com/ashiqsabith123/api-gateway/pkg/di"
+	logs "github.com/ashiqsabith123/love-bytes-proto/log"
 )
 
 func main() {
@@ -15,7 +16,13 @@ func main() {
 		log.Fatal("Eroor loading config")
 	}
 
-	fmt.Println(config)
+	//fmt.Println(config)
+
+	err = logs.InitLogger("./pkg/logs/log.log")
+	if err != nil {
+		fmt.Println(err)
+		logs.ErrLog.Fatalln("Error while initilizing logger", err)
+	}
 
 	server := di.InitializeApi(config)
 
